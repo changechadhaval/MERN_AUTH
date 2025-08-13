@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js";
 // ========== REGISTER ==========
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
-
+  
   // Validate input
   if (!name || !email || !password) {
     return res
@@ -16,6 +16,7 @@ export const register = async (req, res) => {
   try {
     // Check if user already exists
     const existingUser = await userModel.findOne({ email });
+    
     if (existingUser) {
       return res
         .status(409)
@@ -24,6 +25,7 @@ export const register = async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+    
 
     // Create new user
     const newUser = new userModel({

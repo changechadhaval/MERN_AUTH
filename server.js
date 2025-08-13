@@ -29,4 +29,4 @@ app.use(
 app.get("/", (req, res) => res.send("Hello, I am Home Page"));
 app.use("/api/auth", authRouter);
 
-app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+app.listen(port, () => console.log(`Server running at http://localhost:${port||4040}`));
