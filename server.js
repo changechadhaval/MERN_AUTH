@@ -1,13 +1,19 @@
 import express from "express";
 import cors from "cors";
-import "dotenv/config";
 import cookieParser from "cookie-parser"
-import connectDB from "./config/connectDB.js";
-import authRouter from "./routes/authRoutes.js";
+import authRouter from "./server/routes/authRoutes.js";
+import connectDB from "./server/config/connectDB.js";
+import dotenv from "dotenv";
+import path from "path";
+
+// Load .env from server folder
+dotenv.config({ path: path.resolve("server/.env") });
+
+connectDB();
 
 const app = express();
 const port = process.env.PORT || 4040;
-connectDB();
+
 
 // Middlewares
 app.use(express.json());
