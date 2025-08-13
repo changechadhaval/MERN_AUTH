@@ -5,7 +5,9 @@ import authRouter from "./server/routes/authRoutes.js";
 import connectDB from "./server/config/connectDB.js";
 import dotenv from "dotenv";
 import path from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Load .env from server folder
 dotenv.config({ path: path.resolve("server/.env") });
 
