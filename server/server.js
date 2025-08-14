@@ -16,12 +16,21 @@ const port = process.env.PORT || 4040;
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "http://localhost:5173", // your frontend
-    credentials: true, // allow cookies
-  })
-);
+const allowedOrigins = [
+  "https://mern-auth-frontend-xeee.onrender.com", // production frontend
+  "http://localhost:5173" // local dev frontend
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true // important for cookies/JWT in cross-origin requests
+}));
 
 // Routes
 app.get("/", (req, res) => res.send("Hello, I am Home Page"));
