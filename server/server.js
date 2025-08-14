@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "mern-auth-frontend-xeee.onrender.com", // your frontend
+    origin: "https://mern-auth-frontend-xeee.onrender.com", // your frontend
     credentials: true, // allow cookies
   })
 );
