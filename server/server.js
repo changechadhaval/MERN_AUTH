@@ -17,7 +17,7 @@ const port = process.env.PORT || 4040;
 app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
-  "https://mern-auth-frontend-xeee.onrender.com", // production frontend
+  // "https://mern-auth-frontend-xeee.onrender.com", // production frontend
   "http://localhost:5173" // local dev frontend
 ];
 
